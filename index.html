@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+<style>
+div#text_container {
+    margin-top: 20px;
+    width: 70%;
+    height: 200px;
+    margin-left: 15%;
+	background-color: lightblue;
+    overflow-y: scroll;
+}
+span {
+    background-color: lightpink;
+	letter-spacing: 8px;
+}
+body {
+    margin: 0px;
+}
+div#head {
+        margin-bottom: 30px;
+	float: left;
+	clear: none;
+    width: 100%;
+    height: 50px;
+    background-color: #ffee58;
+    
+	padding: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+p#header_name {
+	float: left;
+  text-align: center;
+  
+  text-decoration: none;
+  font-size: 32px;
+  margin:0%;
+  font-family: 'Oswald', sans-serif;
+}
+div#profile{
+float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+p#demo {
+    margin-left: 20%;
+    align-items: center;
+    font-size: 18px;
+    font-family: cursive;
+}
+p#speed_text{
+   font-family: 'Oswald', sans-serif;
+   font-size: 32px;
+  margin-left: 20%;
+   
+}
+</style>
+</head>
+<body>
+<div id = "head"> 
+	<p id = "header_name">
+	   Typing Practice
+	</p>
+	
+</div>
+<div id="text_container" onclick="getfocus()" onkeypress="keypressed(event)"  tabindex=0>
+  
+</div>
+<p id="demo" onclick="myFunction()">Click on text to start typing</p>
+<p id="speed_text">
+Typing Speed : 
+</p>
+
+
+
+
+<script>
+/*var tcontainer = document.getElementById("text_container");
+var indexoftext = 0;
+var scrollmove = 50;
+var speed_counter = 0;
+var d = new Date();
+
+function getfocus(){
+    if(indexoftext >=1){
+		divs[indexoftext-1].style = " margin:0%; width:5px; height: 5px; border-color:#FFFFFF; font-size:24px; font-family: Roboto, sans-serif;";
+		divs[indexoftext++].style = "background-color:white; margin:0%; width:5px; height: 5px; border-color:#FFFFFF; font-size:24px; font-family: Roboto, sans-serif;";
+	}
+	else divs[indexoftext++].style = "background-color:white; margin:0%; width:5px; height: 5px; border-color:#FFFFFF; font-size:24px; font-family: Roboto, sans-serif;";
+	
+}
+
+function keypressed(event){
+	
+    let speed_interval = Math.floor(d.getTime() / 1000);
+	
+	var keycode = event.what || event.keyCode;
+	
+	//alert(tcontainer.scrollTop);
+	
+	if(String.fromCharCode(keycode) == divs[indexoftext].textContent){
+		divs[indexoftext].style = "background-color:white; margin:0%; width:5px; height: 5px; border-color:#FFFFFF; font-size:24px; font-family: Roboto, sans-serif;";
+	}else{
+		divs[indexoftext].style = "background-color:red; margin:0%; width:5px; height: 5px; border-color:#FFFFFF; font-size:24px; font-family: Roboto, sans-serif;";
+	}
+	
+	if(indexoftext >= 1 && divs[indexoftext - 1].style.backgroundColor != "red"){
+		divs[indexoftext-1].style = "margin:0%; width:5px; height: 5px; border-color:#FFFFFF; font-size:24px; font-family: Roboto, sans-serif;";
+	}
+	indexoftext++;
+	
+	if(indexoftext == scrollmove){
+		tcontainer.scrollTop += 25;
+		scrollmove += 50;
+	}
+	
+    speed_counter += (Math.floor(d.getTime() / 1000)  - speed_interval);
+	
+	if(indexoftext == text.length()-1){
+		document.getElementById("speed_text").innerHTML = "Typing Speed : " + speed_counter;
+	}
+}
+
+tcontainer.onkeydown = function(e) {
+  if(String.fromCharCode(e.keyCode) == ' ' && String.fromCharCode(e.keyCode) == divs[indexoftext].textContent){
+	divs[indexoftext].style = "background-color:white; margin:0%; width:5px; height: 5px; border-color:#FFFFFF; font-size:24px; font-family: Roboto, sans-serif;";
+	if(indexoftext >= 1 && divs[indexoftext - 1].style.backgroundColor != "red"){
+		divs[indexoftext-1].style = "margin:0%; width:5px; height: 5px; border-color:#FFFFFF; font-size:24px; font-family: Roboto, sans-serif;";
+	}
+	indexoftext++; 
+  }
+  
+  
+  return !(e.keyCode == 32 && e.target == tcontainer);
+}; 
+
+*/
+</script>
+
+<script>
+var text = "A paragraph is a series of related sentences developing a central idea, called the topic. Try to think about paragraphs in terms of thematic unity: a paragraph is a sentence or a group of sentences that supports one central, unified idea. Paragraphs add one idea at a time to your broader argument.A paragraph is a series of related sentences developing a central idea, called the topic. Try to think about paragraphs in terms of thematic unity: a paragraph is a sentence or a group of sentences that supports one central, unified idea. Paragraphs add one idea at a time to your broader argument.";
+var tcontainer = document.getElementById("text_container");
+var size = text.length;
+var divs = [];
+
+tcontainer.innerHTML = "";
+
+for(let i = 0; i<size; i++){
+	divs[i] = document.createElement("span");
+    tcontainer.appendChild(divs[i]);
+    divs[i].style = "margin:0%; width:5px; height: 5px; border-color:#FFFFFF; font-size:24px; font-family: Roboto, sans-serif;";
+	divs[i].innerHTML = text.charAt(i);
+	
+}
+
+
+var tcontainer = document.getElementById("text_container");
+var indexoftext = 0;
+var scrollmove = 50;
+var speed_counter = 0;
+var speed_ref = 0;
+var stime = 0;
+
+function getfocus(){
+    if(indexoftext >=1){
+		divs[indexoftext-1].style = " margin:0%; width:5px; height: 5px; border-color:#FFFFFF; font-size:24px; font-family: Roboto, sans-serif;";
+		divs[indexoftext++].style = "background-color:white; margin:0%; width:5px; height: 5px; border-color:#FFFFFF; font-size:24px; font-family: Roboto, sans-serif;";
+	}
+	else divs[indexoftext++].style = "background-color:white; margin:0%; width:5px; height: 5px; border-color:#FFFFFF; font-size:24px; font-family: Roboto, sans-serif;";
+	
+}
+
+function keypressed(event){
+	var d = new Date();
+	if(indexoftext == text.length){
+	
+	return;
+	}
+	
+	if(indexoftext >1)
+    speed_counter += Math.floor(d.getTime() / 1000) - speed_ref;
+	
+	speed_ref = Math.floor(d.getTime() / 1000);
+	
+	
+	var keycode = event.what || event.keyCode;
+	
+	//alert(tcontainer.scrollTop);
+	
+	if(String.fromCharCode(keycode) == divs[indexoftext].textContent){
+		divs[indexoftext].style = "background-color:white; margin:0%; width:5px; height: 5px; border-color:#FFFFFF; font-size:24px; font-family: Roboto, sans-serif;";
+	}else{
+		divs[indexoftext].style = "background-color:red; margin:0%; width:5px; height: 5px; border-color:#FFFFFF; font-size:24px; font-family: Roboto, sans-serif;";
+	}
+	
+	if(indexoftext >= 1 && divs[indexoftext - 1].style.backgroundColor != "red"){
+		divs[indexoftext-1].style = "margin:0%; width:5px; height: 5px; border-color:#FFFFFF; font-size:24px; font-family: Roboto, sans-serif;";
+	}
+	indexoftext++;
+	
+	if(indexoftext == scrollmove){
+		tcontainer.scrollTop += 25;
+		scrollmove += 50;
+	}
+	
+    //speed_counter += (Math.floor(d.getTime() / 1000)  - speed_interval);
+	if(indexoftext == text.length - 2){
+		document.getElementById("speed_text").innerHTML =(Math.floor(d.getTime() / 1000) - stime);
+	}
+	
+}
+
+tcontainer.onkeydown = function(e) {
+  if(String.fromCharCode(e.keyCode) == ' ' && String.fromCharCode(e.keyCode) == divs[indexoftext].textContent){
+	divs[indexoftext].style = "background-color:white; margin:0%; width:5px; height: 5px; border-color:#FFFFFF; font-size:24px; font-family: Roboto, sans-serif;";
+	if(indexoftext >= 1 && divs[indexoftext - 1].style.backgroundColor != "red"){
+		divs[indexoftext-1].style = "margin:0%; width:5px; height: 5px; border-color:#FFFFFF; font-size:24px; font-family: Roboto, sans-serif;";
+	}
+	indexoftext++; 
+  }
+  
+  
+  return !(e.keyCode == 32 && e.target == tcontainer);
+}; 
+
+
+
+</script>
+
+
+</body>
+</html>
